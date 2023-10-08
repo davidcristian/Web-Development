@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 5%;
+}
+
+td {
+  position: relative;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  object-fit: cover;
+  height: 160px;
+  width: 120px;
+}
+
+.pop-up {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+
+  width: 300px;
+  top: 100%;
+  left: 50%;
+  /* half of width */
+  margin-left: -150px;
+}
+
+td:hover .pop-up {
+  display: block;
+}

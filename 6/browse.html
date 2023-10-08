@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="UTF-8" />
+
+    <title>Browse Recipes</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <button type="button" onclick="location.href='/index.html'">&lt;</button
+        >Browse Recipes
+      </h1>
+    </header>
+    <main>
+      <div id="select-container">
+        <label for="select-type">Type:</label>
+        <select id="select-type" onchange="filter_by_type()">
+          <option>All</option>
+          <!-- Recipe types will be populated using JavaScript -->
+        </select>
+        <p id="previous">Previous filter: none</p>
+      </div>
+
+      <div>
+        <table id="entities">
+          <thead>
+            <th>Author</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Recipe</th>
+          </thead>
+          <tbody id="recipes-tbody">
+            <!-- Recipes will be populated using JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/browse.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="UTF-8" />
+
+    <title>Modal Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form>
+        <h1>Registration Form</h1>
+        <input type="text" id="first-name" placeholder="First Name" />
+        <input type="text" id="last-name" placeholder="Last Name" />
+        <input type="text" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <input type="text" id="country" placeholder="Country" />
+
+        <button id="open-modal">Open</button>
+
+        <input type="text" id="address" placeholder="Full Address" readonly />
+      </form>
+    </div>
+
+    <div id="overlay">
+      <div class="container">
+        <form id="modal-form">
+          <h1>Address Form</h1>
+          <input
+            required
+            type="text"
+            id="address-modal"
+            placeholder="Address"
+          />
+          <input
+            required
+            type="text"
+            id="state-county"
+            placeholder="State/County"
+          />
+          <input required type="text" id="city" placeholder="City" />
+          <input required type="text" id="zip-code" placeholder="Zip Code" />
+
+          <button type="submit">Close</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

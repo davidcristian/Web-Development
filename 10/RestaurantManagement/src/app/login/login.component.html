@@ -1,0 +1,25 @@
+<header>
+  <h1><button type="button" routerLink="/main">&lt;</button>Log in</h1>
+</header>
+
+<main>
+  <div class="login-form">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <input
+        id="name"
+        type="text"
+        name="name"
+        [(ngModel)]="user.name"
+        placeholder="name"
+      />
+      <input
+        id="password"
+        type="password"
+        name="password"
+        [(ngModel)]="user.password"
+        placeholder="password"
+      />
+      <input id="login" type="submit" name="login" value="Log in" />
+    </form>
+  </div>
+</main>

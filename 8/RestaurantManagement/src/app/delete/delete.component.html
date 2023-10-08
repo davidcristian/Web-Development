@@ -1,0 +1,33 @@
+<header>
+  <h1><button type="button" routerLink="/main">&lt;</button>Delete Recipe</h1>
+</header>
+<main>
+  <div>
+    <table id="entities">
+      <thead>
+        <th>Author</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Recipe</th>
+        <th>Action</th>
+      </thead>
+      <tbody id="recipes-tbody">
+        <!-- Recipes will be populated using Angular -->
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.author }}</td>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.type }}</td>
+          <td>{{ recipe.recipe }}</td>
+          <td class="button-cell">
+            <button
+              id="delete-button"
+              (click)="deleteRecipe(recipe.id, recipe.recipe)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

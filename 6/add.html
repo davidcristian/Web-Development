@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="UTF-8" />
+
+    <title>Add Recipe</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <button type="button" onclick="location.href='/index.html'">&lt;</button
+        >Add Recipe
+      </h1>
+    </header>
+
+    <main>
+      <div class="add-form">
+        <form id="add-form">
+          <input id="author" type="text" name="author" placeholder="author" />
+          <input id="name" type="text" name="name" placeholder="name" />
+          <input id="type" type="text" name="type" placeholder="type" />
+          <input id="recipe" type="text" name="recipe" placeholder="recipe" />
+          <input id="add" type="submit" name="add" value="Add" />
+        </form>
+      </div>
+
+      <div>
+        <table id="entities">
+          <thead>
+            <th>Author</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Recipe</th>
+          </thead>
+          <tbody id="recipes-tbody">
+            <!-- Recipes will be populated using JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/add.js"></script>
+  </body>
+</html>
