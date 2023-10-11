@@ -1,62 +1,60 @@
 "use strict";
 
-$(document).ready(function () {
-  const $overlay = $("#overlay");
+const countiesSelect = document.getElementById("counties");
+const citiesSelect = document.getElementById("cities");
 
-  function clearMainForm() {
-    $("#first-name").val("");
-    $("#last-name").val("");
-    $("#email").val("");
-    $("#password").val("");
-    $("#country").val("");
+// Load counties from API
+fetch("https://roloca.coldfuse.io/judete")
+  .then((response) => response.json())
+  .then((counties) => {
+    // Sort counties alphabetically
+    counties.sort((a, b) => a.nume.localeCompare(b.nume));
 
-    $("#address").val("");
-  }
+    // Populate counties select box
+    counties.forEach((county) => {
+      const option = document.createElement("option");
+      option.text = county.nume;
+      option.value = county.auto;
+      countiesSelect.add(option);
+    });
 
-  function clearModalFields() {
-    $("#address-modal").val("");
-    $("#state-county").val("");
-    $("#city").val("");
-    $("#zip-code").val("");
-  }
-
-  // Ignore Enter key press in input fields
-  $("input").keydown(function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-    }
+    // Trigger change event to populate cities based on initial county
+    //countiesSelect.dispatchEvent(new Event('change'));
   });
 
-  function setAddressFieldValue() {
-    const address =
-      $("#address-modal").val() +
-      $("#state-county").val() +
-      $("#city").val() +
-      $("#zip-code").val();
+function addCity(text, value) {
+  const option = document.createElement("option");
+  option.text = text;
+  option.value = value;
+  citiesSelect.add(option);
+}
 
-    $("#address").val(address);
+// Populate cities based on selected county
+countiesSelect.addEventListener("change", async () => {
+  // Clear cities select box
+  citiesSelect.innerHTML = "";
+
+  const selectedCounty = countiesSelect.value;
+  if (!selectedCounty) {
+    citiesSelect.setAttribute("disabled", "disabled");
+    addCity("--Select city--", "");
+    return;
   }
 
-  // Open modal when Open button is clicked
-  $("#open-modal").click(function (event) {
-    event.preventDefault();
+  // Load cities for selected county from API
+  await fetch(`https://roloca.coldfuse.io/orase/${selectedCounty}`)
+    .then((response) => response.json())
+    .then((cities) => {
+      // Sort cities alphabetically
+      cities.sort((a, b) => a.nume.localeCompare(b.nume));
 
-    clearModalFields();
-    $overlay.fadeIn();
+      // Populate cities select box
+      cities.forEach((city) => {
+        addCity(city.nume, city.nume);
+      });
+    });
 
-    $("#address-modal").focus();
-  });
-
-  // Close modal when Close button is clicked
-  $("#modal-form").submit(function (event) {
-    event.preventDefault();
-
-    setAddressFieldValue();
-    $overlay.fadeOut();
-
-    $("#first-name").focus();
-  });
-
-  clearMainForm();
-  $("#first-name").focus();
+  if (citiesSelect.options.length > 0) {
+    citiesSelect.removeAttribute("disabled");
+  }
 });
