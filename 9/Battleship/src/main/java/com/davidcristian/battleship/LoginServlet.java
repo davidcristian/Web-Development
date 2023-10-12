@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.*;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    // The credentials are left here intentionally
     private static final String dbUsername = "sa";
     private static final String dbPassword = "@dm1n123";
     private static final String dbURL = "jdbc:sqlserver://localhost;databaseName=web;encrypt=false;";

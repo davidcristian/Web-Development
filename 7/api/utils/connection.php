@@ -1,5 +1,6 @@
 <?php
 function open_connection(): mysqli {
+    // The credentials are left here intentionally
     $server = "127.0.0.1";
     $user = "root";
     $password = "";
